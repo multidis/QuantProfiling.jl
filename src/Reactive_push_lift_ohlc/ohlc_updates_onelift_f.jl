@@ -10,7 +10,7 @@ s_ohlc = Reactive.Input(vec(ohlc_BA.values[1,:]))
 function fclose(s::Vector{Float64})
     return s[4]
 end
-s_close = lift(fclose, Float64, s_ohlc)
+s_close = lift(fclose, s_ohlc, typ=Float64)
 
 vsig = [s_close.value]
 function vsigupd!(vsig::Vector{Float64}, nma::Int64, nmax::Int64)

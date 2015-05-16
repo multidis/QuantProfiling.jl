@@ -7,7 +7,7 @@ ohlc_BA = TimeSeries.readtimearray("../../data/OHLC_BA.csv")
 ohlc_valarr = ohlc_BA.values
 
 s_ohlc = Reactive.Input(ohlc_valarr[1,:])
-s_close = lift(s -> s[4], Float64, s_ohlc)
+s_close = lift(s -> s[4], s_ohlc, typ=Float64)
 
 vsig = [s_close.value]
 function vsigupd!(vsig::Vector{Float64}, nma::Int64, nmax::Int64)
